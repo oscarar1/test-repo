@@ -1,0 +1,6 @@
+import MyCustomLogoFull from './logo/my-company-logo.png';
+
+
+const LogoFull = () => {
+  return <img src="https://www.tutorialspoint.com/html/images/test.png" />;
+};
