@@ -52,7 +52,11 @@ import {
 } from '@backstage/plugin-org';
 import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
 
-import { EntityJenkinsContent } from '@backstage/plugin-jenkins';
+import {
+  EntityJenkinsContent,
+  EntityLatestJenkinsRunCard,
+  isJenkinsAvailable,
+} from '@backstage/plugin-jenkins';
 
 const cicdContent = (
   // This is an example of how you can implement your company's logic in entity page.
@@ -60,6 +64,10 @@ const cicdContent = (
   <EntitySwitch>
     <EntitySwitch.Case if={isGithubActionsAvailable}>
       <EntityGithubActionsContent />
+    </EntitySwitch.Case>
+
+    <EntitySwitch.Case if={isJenkinsAvailable}>
+      <EntityJenkinsContent />
     </EntitySwitch.Case>
 
     <EntitySwitch.Case>
@@ -81,11 +89,23 @@ const cicdContent = (
   </EntitySwitch>
 );
 
+const cicdCard = (
+  <EntitySwitch>
+    <EntitySwitch.Case if={isJenkinsAvailable}>
+      <Grid item sm={6}>
+        <EntityLatestJenkinsRunCard branch="master" variant="gridItem" />
+      </Grid>
+    </EntitySwitch.Case>
+  </EntitySwitch>
+);
+
+
 const overviewContent = (
   <Grid container spacing={3} alignItems="stretch">
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
+    {cicdCard}
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
     </Grid>

@@ -14,7 +14,7 @@
     "@backstage/plugin-catalog-react": "^0.2.1",
     "@backstage/plugin-circleci": "^0.2.15",
     "@backstage/plugin-github-actions": "^0.4.8",
-    "@backstage/plugin-jenkins": "^0.4.4",
+    "@backstage/plugin-jenkins": "^0.4.5",
     "@backstage/plugin-org": "^0.3.14",
     "@backstage/plugin-scaffolder": "^0.9.7",
     "@backstage/plugin-search": "^0.3.7",
